@@ -20,10 +20,15 @@
  */
 
 package com.me.humble.jon.shop
+import scala.collection.immutable.Seq
 
 object shop {
   def price(product: Product): Price = product match {
     case Apple  => 60
     case Orange => 25
+  }
+
+  def scan(products: Seq[Product]): Price = {
+    0
   }
 }
