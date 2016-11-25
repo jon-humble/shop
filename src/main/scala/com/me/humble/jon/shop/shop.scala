@@ -24,11 +24,31 @@ import scala.collection.immutable.Seq
 
 object Shop {
   def price(product: Product): Price = product match {
-    case Apple  => 60
-    case Orange => 25
+    case Apple  => 60.0
+    case Orange => 25.0
+  }
+
+  def multiPrice(product: Product, count: Integer): Price = product match {
+    case Apple  => priceApples(count)
+    case Orange => priceOranges(count)
+  }
+
+  def priceApples(count: Integer): Price = {
+    // Apples have buy one get one free.
+    val applesToChargeFor = (count / 2) + (count % 2)
+    price(Apple) * applesToChargeFor
+  }
+
+  def priceOranges(count: Integer): Price = {
+    // Oranges are on 3 for 2
+    val orangesToChargeFor = ((count / 3) * 2) + (count % 3)
+    price(Orange) * orangesToChargeFor
   }
 
   def scan(products: Seq[Product]): Price = {
-    products.map(p => price(p)).fold(0.0)(_ + _)
+    val groups = products.groupBy(p => p)
+    val counts = groups.mapValues(_.length)
+    val prices = counts.toList.map(x => multiPrice(x._1, x._2))
+    prices.fold(0.0)(_ + _)
   }
 }

@@ -38,4 +38,12 @@ class PricingSpec extends FlatSpec {
     assert(Shop.scan(Seq(Apple, Orange)) == 85)
   }
 
+  "Three Apples" should "cost 120p, with buy one get one free offer" in {
+    assert(Shop.scan(Seq(Apple, Apple, Apple)) == 120)
+  }
+
+  "Three Oranges" should "cost 50p, with 3 for the price of 2 offer" in {
+    assert(Shop.scan(Seq(Orange, Orange, Orange)) == 50)
+  }
+
 }
