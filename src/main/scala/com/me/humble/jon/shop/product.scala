@@ -19,14 +19,8 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.me.humble.jon
+package com.me.humble.jon.shop
 
-package object shop {
-
-  type Price = Double
-
-  type Traversable[+A] = scala.collection.immutable.Traversable[A]
-  type Iterable[+A]    = scala.collection.immutable.Iterable[A]
-  type Seq[+A]         = scala.collection.immutable.Seq[A]
-  type IndexedSeq[+A]  = scala.collection.immutable.IndexedSeq[A]
-}
+sealed trait Product
+case object Apple extends Product
+case object Orange extends Product

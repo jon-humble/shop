@@ -19,14 +19,18 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.me.humble.jon
+package com.me.humble.jon.shop
 
-package object shop {
+import org.scalatest.FlatSpec
 
-  type Price = Double
+class PricingSpec extends FlatSpec {
 
-  type Traversable[+A] = scala.collection.immutable.Traversable[A]
-  type Iterable[+A]    = scala.collection.immutable.Iterable[A]
-  type Seq[+A]         = scala.collection.immutable.Seq[A]
-  type IndexedSeq[+A]  = scala.collection.immutable.IndexedSeq[A]
+  "An Apple" should "cost 60p" in {
+    assert(shop.price(Apple) == 60)
+  }
+
+  "An Orange" should "cost 25p" in {
+    assert(shop.price(Orange) == 60)
+  }
+
 }

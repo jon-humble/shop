@@ -1,3 +1,5 @@
+scalaVersion in ThisBuild := "2.12.0"
+
 lazy val shop =
   project.in(file(".")).enablePlugins(AutomateHeaderPlugin, GitVersioning)
 
