@@ -2,6 +2,14 @@
 
 Welcome to shop!
 
+You can use the shop scanner by pulling down the code and running:
+
+> sbt
+> run "Apple" "Orange" "Apple"
+
+Tests can be run using sbt test.
+
+
 ## Contribution policy ##
 
 Contributions via GitHub pull requests are gladly accepted from their original
