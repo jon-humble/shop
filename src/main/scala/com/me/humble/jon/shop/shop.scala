@@ -22,7 +22,8 @@
 package com.me.humble.jon.shop
 
 object shop {
-  def price(product: Product): Price = {
-    return 0
+  def price(product: Product): Price = product match {
+    case Apple  => 60
+    case Orange => 25
   }
 }

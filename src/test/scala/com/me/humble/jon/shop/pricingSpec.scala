@@ -30,7 +30,7 @@ class PricingSpec extends FlatSpec {
   }
 
   "An Orange" should "cost 25p" in {
-    assert(shop.price(Orange) == 60)
+    assert(shop.price(Orange) == 25)
   }
 
 }
