@@ -24,5 +24,4 @@ package com.me.humble.jon
 package object shop {
 
   type Price = Double
-
 }

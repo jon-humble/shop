@@ -27,15 +27,15 @@ import scala.collection.immutable.Seq
 class PricingSpec extends FlatSpec {
 
   "An Apple" should "cost 60p" in {
-    assert(shop.price(Apple) == 60)
+    assert(Shop.price(Apple) == 60)
   }
 
   "An Orange" should "cost 25p" in {
-    assert(shop.price(Orange) == 25)
+    assert(Shop.price(Orange) == 25)
   }
 
   "An Apple and an Orange" should "cost 85p" in {
-    assert(shop.scan(Seq(Apple, Orange)) == 85)
+    assert(Shop.scan(Seq(Apple, Orange)) == 85)
   }
 
 }

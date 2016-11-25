@@ -22,13 +22,13 @@
 package com.me.humble.jon.shop
 import scala.collection.immutable.Seq
 
-object shop {
+object Shop {
   def price(product: Product): Price = product match {
     case Apple  => 60
     case Orange => 25
   }
 
   def scan(products: Seq[Product]): Price = {
-    0
+    products.map(p => price(p)).fold(0.0)(_ + _)
   }
 }
