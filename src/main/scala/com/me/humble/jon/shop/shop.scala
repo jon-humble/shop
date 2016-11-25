@@ -23,6 +23,21 @@ package com.me.humble.jon.shop
 import scala.collection.immutable.Seq
 
 object Shop {
+  def main(args: Array[String]): Unit = {
+    val products = args.collect(toProduct)
+    val total    = Shop.scan(products.toList)
+    println("Total Cost is " + total + " pence")
+  }
+
+  // Public API for the shop, enables the scanning and PricingSpec
+  // of a sequence of products.
+  def scan(products: Seq[Product]): Price = {
+    val groups = products.groupBy(p => p)
+    val counts = groups.mapValues(_.length)
+    val prices = counts.toList.map(x => multiPrice(x._1, x._2))
+    prices.fold(0.0)(_ + _)
+  }
+
   def price(product: Product): Price = product match {
     case Apple  => 60.0
     case Orange => 25.0
@@ -45,10 +60,8 @@ object Shop {
     price(Orange) * orangesToChargeFor
   }
 
-  def scan(products: Seq[Product]): Price = {
-    val groups = products.groupBy(p => p)
-    val counts = groups.mapValues(_.length)
-    val prices = counts.toList.map(x => multiPrice(x._1, x._2))
-    prices.fold(0.0)(_ + _)
+  val toProduct: PartialFunction[String, Product] = {
+    case "Apple"  => Apple
+    case "Orange" => Orange
   }
 }
